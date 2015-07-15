@@ -6,7 +6,7 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var jade = require('gulp-jade');
 
-// 
+// Jade
 gulp.task('templates', function() {
     var YOUR_LOCALS = {};
 
@@ -38,5 +38,4 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-// gulp.task('default', ['lint', 'sass', 'styles', 'watch']);
 gulp.task('default', ['sass', 'minify', 'templates', 'watch']);
