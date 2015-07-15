@@ -1,0 +1,1 @@
+Not an actual problem, but I got stuck on number one and decided I'd start with a warm-up. Implementing a graph in Python, as well as the breadth-first and depth-first search algorithms.
