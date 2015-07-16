@@ -1,8 +1,6 @@
 from collections import deque
 
-'''
-	Included so I can define my own operator
-'''
+# Included so I can define my own operator
 
 class Infix:
     def __init__(self, function):
@@ -18,9 +16,7 @@ class Infix:
     def __call__(self, value1, value2):
         return self.function(value1, value2)
 
-'''
-	Adjacency list implementation
-'''
+# Adjacency list implementation
 
 class Graph(object):
 
@@ -45,12 +41,23 @@ class Graph(object):
 		self.nodes.append(node);
 		self.edges[node] = []
 
+	# not going to implement now
+	# remove node and corresponding
+	# edges
+	def removeNode(self, node):
+		pass
+
 	def addEdge(self, node1, node2):
 		# only have to check the existence of
 		# one, because of symmetry
 		if node2 not in self.edges[node1]:
 			self.edges[node1].append(node2)
 			self.edges[node2].append(node1)
+
+	# not going to implement now. remove 
+	# edge between node1 and node2
+	def removeEdge(self, node1, node2):
+		pass
 
 	def bfs(self, start):
 		# initalization
@@ -81,10 +88,30 @@ class Graph(object):
 					seen.append(adj)
 		print seen
 
+	# how many disconnected graphs exist
+	# not going to implement (now)
+	# but could be good to have
+	def numberOfSubgraphs(self):
+		pass
+
+	# find path; not (yet) going to
+	# implement
+	def findPath(self, node1, node2):
+		pass
+
+	# find shortest path; not (yet)
+	# going to implement
+	def findShortestPath(self, node1, node2):
+		pass
+
+	# find nodes such that there exists
+	# an edge between
+	def findNeighboringNodes(self, node):
+		pass
 
 def main():
 	# initialization
-	nodes = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+	nodes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
 	edges = {}
 	for node in nodes:
 		edges[node] = []
@@ -97,13 +124,16 @@ def main():
 
 	'A' |_edge_| 'B'
 	'A' |_edge_| 'C'
-	'B' |_edge_| 'C'
-	'B' |_edge_| 'D'
-	'C' |_edge_| 'D'
-	'D' |_edge_| 'C'
-	'E' |_edge_| 'F'
-	'F' |_edge_| 'C'
-	'A' |_edge_| 'G'
+	'A' |_edge_| 'D'
+	'B' |_edge_| 'E'
+	'B' |_edge_| 'F'
+	'B' |_edge_| 'G'
+	'C' |_edge_| 'H'
+	'C' |_edge_| 'I'
+	'C' |_edge_| 'J'
+	'D' |_edge_| 'K'
+	'D' |_edge_| 'L'
+	'D' |_edge_| 'M'
 
 	print graph.edges
 
