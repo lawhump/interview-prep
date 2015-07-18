@@ -21,16 +21,35 @@ class q3 {
 		int[] freq1 = new int[26];
 		int[] freq2 = new int[26];
 
+		// turns out you can do this with one arry.
+		// thanks alec
+		int[] freq = new int[26];
+
 		for(int i=0; i< s1.length(); i++) {
 			char c1 = s1.charAt(i);
 			char c2 = s2.charAt(i);
 
 			freq1[c1 % 26]++;
 			freq2[c2 % 26]++;
+
+			freq[c1 % 26]++;
 		}
 
-		for (int i=0; i<freq1.length; i++) {
+		// Decrement if we see the character again
+		// in the second word
+		for(int i=0; i< s2.length(); i++) {
+			char c = s2.charAt(i);			
+			freq[c % 26]--;
+		}
+
+		for(int i=0; i<freq1.length; i++) {
 			if(freq1[i] != freq2[i]) {
+				return false;
+			}
+		}
+
+		for(int i=0; i<freq.length(); i++){
+			if(freq[i] != 0) {
 				return false;
 			}
 		}
