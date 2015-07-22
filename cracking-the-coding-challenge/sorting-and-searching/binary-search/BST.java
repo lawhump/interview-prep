@@ -30,7 +30,7 @@ public class BST {
 			}
 
 			else {
-				insert(root.left, v);
+				insert(root.getLeft(), v);
 			}
 		}
 
@@ -40,7 +40,7 @@ public class BST {
 			}
 
 			else {
-				insert(root.right, v);	
+				insert(root.getRight(), v);	
 			}
 		}
 	}
@@ -52,7 +52,7 @@ public class BST {
 			}
 
 			else {
-				insert(subRoot.left, v);
+				insert(subRoot.getLeft(), v);
 			}
 		}
 
@@ -62,7 +62,7 @@ public class BST {
 			}
 
 			else {
-				insert(subRoot.right, v);	
+				insert(subRoot.getRight(), v);	
 			}
 		}
 	}
@@ -71,10 +71,56 @@ public class BST {
 
 	}
 
-	public find(int v) {
+	/**
+	 * Binary search!
+	 */
+	public Node find(int v) {
+		System.out.println("Attempting to find value: " + v);
+		if (v == head.getValue()){
+			System.out.println("Found value: " + v);
+			return head;
+		}
 
+		if (v < head.getValue()){
+			if (head.getLeft() != null){
+				return find(head.getLeft(), v);
+			}
+		}
+
+		else {
+			if (head.getRight() != null){
+				return find(head.getRight(), v);
+			}
+		}
+		System.out.println("Value not found");
+		return null;
 	}
 
+	private Node find(Node curr, int v) {
+		if (v == curr.getValue()){
+			System.out.println("Found value: " + v);
+			return curr;
+		}
+
+		if (v < curr.getValue()){
+			if (curr.getLeft() != null){
+				return find(curr.getLeft(), v);
+			}
+		}
+
+		else {
+			if (curr.getRight() != null){
+				return find(curr.getRight(), v);
+			}
+		}
+		System.out.println("Value not found");
+		return null;
+	}
+
+	/**
+	 * Stretch goal: implement an AVL tree.
+	 * This method serves as a good springboard.
+	 */
 	// public AVLTree toAVLTree { }
 
 	// lol
@@ -91,14 +137,66 @@ public class BST {
 	 * and DFS in python, but that was with 
 	 * adjacency lists, and not explicit nodes
 	 * and pointers.
-	 *
+	 * 
+	 * This is harder than anticipated. :/
 	 */
 	public void printByLevel(){
-		List<Node> queue = new LinkedList<Node>();
-		queue.add(head);
+		// List<Node> queue = new LinkedList<Node>();
+		// queue.add(head);
 
-		while(queue.size > 0) {
-			// check left
+		// while(queue.size > 0) {
+		// 	// check left
+		// }
+	}
+
+	/**
+	 * The standard set of traversal algorithms.
+	 * Trying to refamiliarize myself with 
+	 * recursion, trees, and recursion on trees.
+	 */
+	public void preOrderTraversal(){
+		System.out.println("Beginning preOrder traversal:");
+		if (head!=null) {
+			preOrderTraversal(head);
+		}
+	}
+	
+	private void preOrderTraversal(Node subRoot){
+		if(subRoot != null){
+			System.out.println(subRoot.getValue());
+			preOrderTraversal(subRoot.getLeft());
+			preOrderTraversal(subRoot.getRight());
+		}
+	}
+
+	public void inOrderTraversal(){
+		System.out.println("Beginning inOrder traversal:");
+		if (head!=null) {
+			inOrderTraversal(head);
+		}
+	}
+	
+	private void inOrderTraversal(Node subRoot){
+		if(subRoot != null){
+			inOrderTraversal(subRoot.getLeft());
+			System.out.println(subRoot.getValue());
+			inOrderTraversal(subRoot.getRight());
+		}
+	}
+
+	public void postOrderTraversal(){
+		System.out.println("Beginning postOrder traversal:");
+		if (head!=null) {
+			postOrderTraversal(head);
+		}
+	}
+	
+	private void postOrderTraversal(Node subRoot){
+		if(subRoot != null){
+			postOrderTraversal(subRoot.getLeft());
+			postOrderTraversal(subRoot.getRight());
+			System.out.println(subRoot.getValue());
+
 		}
 	}
 }
