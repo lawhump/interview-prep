@@ -1,0 +1,7 @@
+So I realized I made a large misinterpretation that significantly complicated the problem.
+
+I haven't solved it yet. :( I have O(1) pop() and min(), and O(n) push.
+
+I'm thinking using an array somehow for push() so I can have amortized constant time.
+
+Not in the spirit of interviews to not solve it in one sitting, but I'm going to solve this problem.

@@ -6,7 +6,7 @@ JC = javac
 	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-	binary-search.java \
+	binarySearch.java \
 	Node.java \
 	BST.java
 

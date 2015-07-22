@@ -1,11 +1,11 @@
 import java.io.*;
 import java.util.*;
 
-class binary-search {
+public class binarySearch {
 
 
 	public static void main(String[] args) {
-
+		//  code
 	}
 
 }
