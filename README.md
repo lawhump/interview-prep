@@ -28,3 +28,9 @@ https://github.com/lawhump/interview-prep/tree/master/cracking-the-coding-challe
 
 Location: /trees-and-graphs/bfs-and-dfs, Language: Python
 https://github.com/lawhump/interview-prep/tree/master/cracking-the-coding-challenge/trees-and-graphs/bfs-and-dfs
+
+Location: /sorting-and-searching, Language: Java
+https://github.com/lawhump/interview-prep/tree/master/cracking-the-coding-challenge/sorting-and-searching/binary-search
+https://github.com/lawhump/interview-prep/tree/master/cracking-the-coding-challenge/sorting-and-searching/mergesort
+
+Alternatively, you can click the "Quickly jump between files" button and search whichever file extension you want to see code for (e.g. .java, .py, .js, etc.). I don't want to have to link these forever. :)
