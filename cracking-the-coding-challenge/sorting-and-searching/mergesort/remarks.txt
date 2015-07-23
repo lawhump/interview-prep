@@ -1,0 +1,7 @@
+Proabably not anywhere close to the best way to do it, but I just wanted to do it all from memory.
+
+Speaking of memory, I don't think I managed it well. Too many memory allocations.
+
+
+
+Also, I hear this can be done in place. Computer scientists are insane.

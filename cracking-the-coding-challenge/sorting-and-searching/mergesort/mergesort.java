@@ -41,39 +41,42 @@ public class mergesort {
 		int[] sortedLeft = mergesort(aLeft, aRight);
 		int[] sortedRight = mergesort(bLeft, bRight);
 
-		for(int i=0; i<sortedLeft.length; i++){
-			System.out.println(sortedLeft[i]);
-		}
-
-		for(int i=0; i<sortedRight.length; i++){
-			System.out.println(sortedRight[i]);
-		}
-
 		int[] sorted = merge(sortedLeft, sortedRight);
-		// for(int i=0; i<sorted.length; i++){
-		// 	System.out.println(sorted[i]);
-		// }
 
 		return sorted;
 	}
 
 	public static int[] merge(int[] a, int[] b) {
+
+
 		int[] merged = new int[a.length + b.length];
 
 		int idxA = 0;
 		int idxB = 0;
 
-		for (int i=0; i<merged.length; i++){
-			// System.out.println("i="+i+", idxA="+idxA+", idxB="+idxB);
-			if(idxA != a.length) {
-				if(a[idxA] <= b[idxB]) {
-					merged[i] = a[idxA];
-					idxA++;
-				}
+		while (idxA != a.length && idxB != b.length) {
+			if(a[idxA] <= b[idxB]) {
+				merged[idxA+idxB] = a[idxA];
+				idxA++;
 			}
+
 			else {
-				merged[i] = a[idxB];
+				merged[idxA+idxB] = b[idxB];
 				idxB++;
+			}
+		}
+
+		if (idxA == a.length) {
+			while (idxB != b.length) {
+				merged[idxA+idxB] = b[idxB];
+				idxB++;
+			}
+		}
+
+		else {
+			while (idxA != a.length) {
+				merged[idxA+idxB] = a[idxA];
+				idxA++;
 			}
 		}
 
@@ -81,14 +84,14 @@ public class mergesort {
 	}
 
 	public static void main(String[] args) {
-		int[] array = {2,6,9,3,1,2,12,10};
+		int[] array = {2,6,9,3,1,2,12,10,11,42,666,6,609};
 		int[] sorted = new int[array.length];
 
 		sorted = mergesort(array);
 
-		// for(int i=0; i<array.length; i++){
-		// 	System.out.println(sorted[i]);
-		// }
+		for(int i=0; i<array.length; i++){
+			System.out.println(sorted[i]);
+		}
 
 	}
 
