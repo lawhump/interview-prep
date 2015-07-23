@@ -23,6 +23,8 @@ public class binarySearch {
 		bst.find(15);
 		bst.find(42);
 		bst.find(16);
+
+		bst.printByLevel();
 	}
 
 }

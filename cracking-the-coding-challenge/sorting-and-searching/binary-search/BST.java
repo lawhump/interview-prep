@@ -1,11 +1,9 @@
 import java.util.*;
 
+// TODO Make BST extend BT
+// TODO Make AVL Tree extend BST
 public class BST {
 	private Node head;
-
-	private class Queue {
-		List<Node> queue = new LinkedList<Node>();
-	}
 
 	public BST() {
 		this.head = null;
@@ -67,9 +65,16 @@ public class BST {
 		}
 	}
 
-	public void remove(Node n) {
+	/**
+	 * Function to determine of the tree is balanced.
+	 * @param  tol maximum heights two subtrees can differ
+	 * @return 
+	 */
+	public boolean isBalanced(int tol) {
 
 	}
+
+	public void remove(Node n) { }
 
 	/**
 	 * Binary search!
@@ -138,15 +143,48 @@ public class BST {
 	 * adjacency lists, and not explicit nodes
 	 * and pointers.
 	 * 
-	 * This is harder than anticipated. :/
 	 */
 	public void printByLevel(){
-		// List<Node> queue = new LinkedList<Node>();
-		// queue.add(head);
+		List<Node> queue = new LinkedList<Node>();
+		queue.add(head);
 
-		// while(queue.size > 0) {
-		// 	// check left
-		// }
+		while (queue.size() != 0) {
+			Node curr = queue.remove(0);
+			System.out.println(curr.getValue());
+
+			if (curr.getLeft() != null){
+				queue.add(curr.getLeft());
+			}
+
+			if(curr.getRight() != null){
+				queue.add(curr.getRight());
+			}
+		}
+	}
+
+	/**
+	 * Yeah yeah yeah, I didn't know what to name it.
+	 *
+	 * arr[i] are the elements at the ith level of the tree
+	 * i think i'm going to rewrite the Node class to store
+	 * height. it's the lazy way out, i know
+	 */	
+	public ArrayList<LinkedList> questionFour() {
+		List<Node> queue = new LinkedList<Node>();
+		queue.add(head);
+
+		while (queue.size() != 0) {
+			Node curr = queue.remove(0);
+			System.out.println(curr.getValue());
+
+			if (curr.getLeft() != null){
+				queue.add(curr.getLeft());
+			}
+
+			if(curr.getRight() != null){
+				queue.add(curr.getRight());
+			}
+		}
 	}
 
 	/**
