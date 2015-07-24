@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"><head><title>Notes as I Go</title><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300|Lora"><link rel="stylesheet" href="css/styles.css"></head><body><header><h1>Lawrence's Guide to Crushing Google</h1><nav><ul><li><a href="index.html">Data Structures and Algorithms</a></li><li><a href="web.html">Web Development</a></li></ul></nav></header><div class="anchors"><h3>Jump to section:</h3><a href="#general">General Questions</a><br><a href="#html">HTML Questions</a></div><div class="more-info"><p>This was my attempt to keep me obligated to studying
+and learning new things - i.e. using Jade for the first 
+time. More available on github. Check me out dudes! </p><a href="http://www.github.com/lawhump">My Github</a></div><section class="content"><h5>I'm taking questions that I find interesting from the <a href="https://github.com/h5bp/Front-end-Developer-Interview-Questions">front-end developer repository</a>. If you haven't, check it out. There's good stuff.</h5><article id="general"><h2>General Questions</h2><h3><strong>How would you optimize a website's assets/resources?</strong></h3><dl><dt>Make fewer HTTP requests</dt><dd>Making fewer HTTP requests is the quickest way to 
+significantly decrease load time on your page.
+Typically, this is accomplished by:
+
+<ul>
+    <li>Combining scripts and stylesheets</li>
+    <li>Using image sprites</li>
+    <li>Avoiding redirects</li>
+    <li>Avoiding frames</li>
+</ul>
+</dd><dt>Use a CDN (Content Delivery Network)</dt><dd>A CDN is a network of servers in different geographical
+locations which all have access to the same files. 
+Because proximity to server affects overall load time,
+CDNs make it such that the best server is used in serving
+files. Sometimes CDNs can be pricey, but there are several
+that offer their services for free.
+</dd><dt>CSS & JS files at the top & bottom respectively</dt><dd>Most notable browsers, except Opera, won't begin rendering
+content until all of the stylesheets are downloaded and parsed.
+Accordingly, it makes most sense to put them as early as possible.
+<br>
+JS files, however, should be placed as close to the closing body
+tag as possible. Because JS files can potentially change any content
+on the page, browsers will block downloads until the JS files are
+downloaded and parsed. Also an argument for concatenating JS files.
+</dd><dt>Concatenate stylesheets and scripts</dt><dd>Done to reduce the number of HTTP requests. Despite situational
+instances where it's advantageous to have more than one stylesheet
+or JS file, you can often get away with just using one.
+</dd><dt>Minify HTML, CSS, and JS files</dt><dd>Also known as obfuscating, removing all of the whitespace in your
+files is a simple way to decrease download size.
+</dd><dt>Gzip components</dt><dd>A well performing page should serve its HTML, CSS, JS, and 
+any other text files compressed. If your server responds with
+a JSON object, this can be compressed as well. Most modern browsers
+support Gzipped files.
+</dd><dt>Host assets on different domains</dt><dd>Because browsers restrict the number of concurrent downloads per 
+domain, you should split your assets between different domains.
+Here is the data for current browsers' concurrent downloads.
+</dd><table><thead><tr><th>Browser</th><th>HTTP/1.1</th><th>HTTP/1.0</th></tr></thead><tbody><tr><td class="browser">IE 6,7</td><td>2</td><td>4</td></tr><tr><td class="browser">IE 8</td><td>6</td><td>6</td></tr><tr><td class="browser">Firefox 2</td><td>2</td><td>8</td></tr><tr><td class="browser">Firefox 3</td><td>6</td><td>6</td></tr><tr><td class="browser">Safari 3,4</td><td>4</td><td>4</td></tr><tr><td class="browser">Chrome 1,2</td><td>6</td><td>?</td></tr><tr><td class="browser">Chrome 3</td><td>4</td><td>4</td></tr><tr><td class="browser">Chrome 4+</td><td>6</td><td>?</td></tr><tr><td class="browser">iPhone 2</td><td>4</td><td>?</td></tr><tr><td class="browser">iPhone 3</td><td>6</td><td>?</td></tr><tr><td class="browser">iPhone 4</td><td>4</td><td>?</td></tr><tr><td class="browser">Opera 9.63,10.00</td><td>4</td><td>4</td></tr><tr><td class="browser">Opera 10.51</td><td>8</td><td>?</td></tr></tbody></table><p>I got a lot of my answers from &nbsp;<a href="http://www.sitepoint.com/web-site-optimization-steps/">here </a>so check em out for more detail.</p></dl><h3><strong>What is flash of unstyled content (FOUC) and how do you avoid it?</strong></h3><p>Because I've dealt with this problem a couple times, I figured I should
+mention it here. In AngularJS, often ng-cloak should work. In typical
+web pages though, the best solution is put all of your CSS in the head.
+This puts the styles before the content, so when the content finally loads,
+it will be styled. <br>You could also set your body to visibility: hidden; and using javascript
+display your body. Scripts execute well after content has displayed, hereby
+avoiding FOUC.</p><h3><strong>What does CORS stand for and what issue does it address?</strong></h3><p>"The Cross-Origin Resource Sharing standard works by adding new HTTP headers 
+that allow servers to describe the set of origins that are permitted to read 
+that information using a web browser.  Additionally, for HTTP request methods 
+that can cause side-effects on user data (in particular, for HTTP methods other 
+than GET, or for POST usage with certain MIME types), the specification mandates 
+that browsers "preflight" the request, soliciting supported methods from the 
+server with an HTTP OPTIONS request method, and then, upon "approval" from the 
+server, sending the actual request with the actual HTTP request method.  Servers 
+can also notify clients whether "credentials" (including Cookies and HTTP 
+Authentication data) should be sent with requests." [<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">citation</a>]</p><article id="html"><h2>HTML Questions</h2><h3><strong>What does a doctype do?</strong></h3><p>It tells the browser which version of the markup language it will be parsing.
+I love <a href="http://stackoverflow.com/questions/7695044/what-does-doctype-html-do">this StackOverflow explanation.</a></p><h3><strong>What's the difference between standards mode and quirks mode?</strong></h3><p>Not as much of an immediate concern anymore, but a history lesson.
+Way back when, the web was written in two versions: Netscape Navigator,
+and Microsoft Internet Explorer. When web standards were created, browsers
+could not immediately switch to the new standards, in fear of breaking most
+existing sites.<br>Now there technically exists three modes: quirks mode, which emulates the 
+Netscape Navigator and Internet Explorer 5 experience, almost standards mode
+has trace amounts of quirky behavior, and standards mode, and full standards
+mode, whose behavior is compliant with HTML and CSS specifications.<br>"In HTML5, the only purpose of the DOCTYPE is to activate full standards mode. 
+Older versions of the HTML standard gave additional meaning to the DOCTYPE, 
+but no browser has ever used the DOCTYPE for anything other than switching 
+between quirks mode and standards mode." [<a href="https://developer.mozilla.org/en-US/docs/Quirks_Mode_and_Standards_Mode">citation</a>]</p><h3><strong>What's the difference between HTML and XHTML?</strong></h3><p>It determines rules for parsing. Documents served with a 'Content-type: text/html'
+header are to be parsed using HTML syntax rules, which are typically less strict, 
+whereas a 'Content-type: application/xml+xhtml' header should be parsed using 
+XHTML syntax which is more strict. <a href="http://www.sitepoint.com/web-foundations/differences-html-xhtml/">More info can be read here.</a></p><h3><strong>Are there any problems with serving pages as application/xhtml+xml?</strong></h3><p>From Google HTML/CSS Standards:
+"Use HTML5. HTML5 (HTML syntax) is preferred for all HTML documents: &lt;!DOCTYPE html&gt;. 
+(It's recommended to use HTML, as text/html. Do not use XHTML. XHTML, as application/xhtml+xml, 
+lacks both browser and infrastructure support and offers less room for optimization than HTML.)
+Although fine with HTML, do not close void elements, i.e. write &lt;br&gt;, not &lt;br /&gt;."</p><h3><strong>How do you serve a page with content in multiple languages?</strong></h3><p>Localization and Internationalization</p><h3><strong>Consider HTML5 as an open web platform. What are the building blocks of HTML5?</strong></h3><p>HTML5 offers some more sematic text markup, e.g. article, aside, header, footer, input, etc., 
+some of it's largest features come in the realm of multimedia, i.e. canvas and video. There is
+also new data storage: local storage, session storage, and web database, as opposed to cookies.<br><em>Local storage </em>stores data with no expiration date.<br><em>Session storage </em>only stores data for one session.<br><em>Cookies </em>have far less space reserved. <br>This StackOverflow thread has a good explanation.<br><a href="http://stackoverflow.com/questions/3220660/local-storage-vs-cookies">http://stackoverflow.com/questions/3220660/local-storage-vs-cookies</a></p><h3><strong>Describe the difference between &lt;script&gt;, &lt;script async&gt; and &lt;script defer&gt; .</strong></h3><p>David Walsh said it best: "This WebKit blog post explains the difference between defer and async best:<br><p class="blockquote">'Both async and defer scripts begin to download immediately without pausing the parser and both support 
+an optional onload handler to address the common need to perform initialization which depends on the 
+script. The difference between async and defer centers around when the script is executed. Each async 
+script executes at the first opportunity after it is finished downloading and before the window's load 
+event. This means it's possible (and likely) that async scripts are not executed in the order in which 
+they occur in the page. The defer scripts, on the other hand, are guaranteed to be executed in the order 
+they occur in the page. That execution starts after parsing is completely finished, but before the 
+document's DOMContentLoaded event.'"</p></p><h3><strong>Have you used different HTML templating languages before?</strong></h3><p>Yo dude, I'm doing that right now! :D</p></article></article></section></body></html>
