@@ -34,7 +34,8 @@ gulp.task('minify', function() {
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('notes/scss/*.scss', ['sass', 'minify']);
-    gulp.watch('notes/templates/index.jade', ['templates']);
+    gulp.watch('notes/scss/partials/*.scss', ['sass', 'minify']);
+    gulp.watch('notes/templates/*.jade', ['templates']);
 });
 
 // Default Task
