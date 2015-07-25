@@ -37,6 +37,7 @@ h5,
 h6 { font: { weight: 400; family: 'Lora', Georgia, serif; } }
 
 h1 {
+    line-height: 1.1;
 	margin-top: 6rem; 
 	text-align: center; 
 }
@@ -47,7 +48,10 @@ h2 {
 
 h3 {  }
 h4 {  }
-h5 {  }
+h5 {
+    margin: 0 auto;
+    max-width: 95%;
+}
 h6 {  }
 p  {  }
 a {
@@ -59,6 +63,7 @@ nav {
 }
 
 ul {
+    list-style-position: inside;
     padding: 0;
 }
 
@@ -75,10 +80,6 @@ dd {
     margin: 0 0 0 160px;
     max-width: 60rem;
     padding-bottom: 1.8rem;
-
-    ul {
-        list-style-position: inside;
-    }
 }
 
 table {
@@ -91,6 +92,7 @@ td:not(.browser) {
 
 article {
 	margin-top: 7rem;
+    max-width: 95%;
 }
 
 header {
@@ -99,6 +101,16 @@ header {
     li {
         list-style: none;
     }
+}
+
+footer {
+    @include order(4);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.code {
+    font-family: monospace;
 }
 
 .anchors {
@@ -110,21 +122,41 @@ header {
     @include order(3);
     margin: 0 auto;
     max-width: 28rem;
+    padding: 0 2rem;
+    text-align: center;
 
     p { 
         margin: 0 auto;
-        max-width: 225px;
-        text-align: auto;
+        max-width: 275px;
+        text-align: left;
     }
 }
 
 .content {
-    @include flex(4 0px);
     @include order(2);
 }
 
 .blockquote {
+    border-left: 3px solid #ccc;
     margin: 1rem 5rem;
     padding-left: 1.5rem;
-    border-left: 3px solid #ccc;
+}
+
+@media all and (min-width: 300px) {
+    article {
+        margin: 7rem auto 0 auto;
+    }
+}
+
+@media all and (min-width: 800px) {
+    .anchors,
+    .more-info {
+        @include flex(1 auto);
+    }
+}
+
+@media all and (min-width: 1000px) {
+    .content {
+        @include flex(4 0px);
+    }
 }
