@@ -101,11 +101,13 @@ header {
   -webkit-order: 3;
   order: 3;
   margin: 0 auto;
-  max-width: 28rem; }
+  max-width: 28rem;
+  padding: 0 2rem;
+  text-align: center; }
   .more-info p {
     margin: 0 auto;
-    max-width: 225px;
-    text-align: auto; }
+    max-width: 275px;
+    text-align: left; }
 
 .content {
   -webkit-box-flex: 4 0px;
