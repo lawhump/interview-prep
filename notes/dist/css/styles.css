@@ -84,7 +84,7 @@ td:not(.browser) {
 
 article {
   margin-top: 7rem;
-  max-width: 95%; }
+  max-width: 90%; }
 
 header {
   text-align: center; }
@@ -120,7 +120,8 @@ footer {
   margin: 0 auto;
   max-width: 28rem;
   padding: 0 2rem;
-  text-align: center; }
+  text-align: center;
+  width: 90%; }
   .more-info p {
     margin: 0 auto;
     max-width: 275px;
@@ -132,6 +133,8 @@ footer {
   -ms-flex-order: 2;
   -webkit-order: 2;
   order: 2; }
+  .content p {
+    margin-bottom: 4rem; }
 
 .blockquote {
   border-left: 3px solid #ccc;
@@ -139,6 +142,12 @@ footer {
   padding-left: 1.5rem; }
 
 @media all and (min-width: 300px) {
+  dt {
+    text-align: center;
+    font-weight: bold;
+    color: green; }
+  dd {
+    padding-bottom: 1.8rem; }
   article {
     margin: 7rem auto 0 auto; } }
 

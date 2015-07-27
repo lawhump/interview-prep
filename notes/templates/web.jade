@@ -191,236 +191,236 @@ html(lang="en")
                     a(href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS") citation
                     | ]
 
-                article#html
-                    h2 HTML Questions
+            article#html
+                h2 HTML Questions
 
-                    h3: strong What does a doctype do?
-                    p
-                        | It tells the browser which version of the markup language it will be parsing.
-                        | I love 
-                        a(href="http://stackoverflow.com/questions/7695044/what-does-doctype-html-do") this StackOverflow explanation.
+                h3: strong What does a doctype do?
+                p
+                    | It tells the browser which version of the markup language it will be parsing.
+                    | I love 
+                    a(href="http://stackoverflow.com/questions/7695044/what-does-doctype-html-do") this StackOverflow explanation.
 
-                    h3: strong What's the difference between standards mode and quirks mode?
-                    p
-                        | Not as much of an immediate concern anymore, but a history lesson.
-                        | Way back when, the web was written in two versions: Netscape Navigator,
-                        | and Microsoft Internet Explorer. When web standards were created, browsers
-                        | could not immediately switch to the new standards, in fear of breaking most
-                        | existing sites.
+                h3: strong What's the difference between standards mode and quirks mode?
+                p
+                    | Not as much of an immediate concern anymore, but a history lesson.
+                    | Way back when, the web was written in two versions: Netscape Navigator,
+                    | and Microsoft Internet Explorer. When web standards were created, browsers
+                    | could not immediately switch to the new standards, in fear of breaking most
+                    | existing sites.
+                    br
+                    | Now there technically exists three modes: quirks mode, which emulates the 
+                    | Netscape Navigator and Internet Explorer 5 experience, almost standards mode
+                    | has trace amounts of quirky behavior, and standards mode, and full standards
+                    | mode, whose behavior is compliant with HTML and CSS specifications.
+                    br
+                    | "In HTML5, the only purpose of the DOCTYPE is to activate full standards mode. 
+                    | Older versions of the HTML standard gave additional meaning to the DOCTYPE, 
+                    | but no browser has ever used the DOCTYPE for anything other than switching 
+                    | between quirks mode and standards mode." [
+                    a(href="https://developer.mozilla.org/en-US/docs/Quirks_Mode_and_Standards_Mode") citation
+                    | ]
+
+                h3: strong What's the difference between HTML and XHTML?
+                p
+                    | It determines rules for parsing. Documents served with a 'Content-type: text/html'
+                    | header are to be parsed using HTML syntax rules, which are typically less strict, 
+                    | whereas a 'Content-type: application/xml+xhtml' header should be parsed using 
+                    | XHTML syntax which is more strict. 
+                    a(href="http://www.sitepoint.com/web-foundations/differences-html-xhtml/") More info can be read here.
+
+                h3: strong Are there any problems with serving pages as application/xhtml+xml?
+                p
+                    | From Google HTML/CSS Standards:
+                    | "Use HTML5. HTML5 (HTML syntax) is preferred for all HTML documents: &lt;!DOCTYPE html&gt;. 
+                    | (It's recommended to use HTML, as text/html. Do not use XHTML. XHTML, as application/xhtml+xml, 
+                    | lacks both browser and infrastructure support and offers less room for optimization than HTML.)
+                    | Although fine with HTML, do not close void elements, i.e. write &lt;br&gt;, not &lt;br /&gt;."
+
+                h3: strong How do you serve a page with content in multiple languages?
+                p
+                    | Localization and Internationalization
+
+                h3: strong Consider HTML5 as an open web platform. What are the building blocks of HTML5?
+                p
+                    | HTML5 offers some more sematic text markup, e.g. article, aside, header, footer, input, etc., 
+                    | some of it's largest features come in the realm of multimedia, i.e. canvas and video. There is
+                    | also new data storage: local storage, session storage, and web database, as opposed to cookies.
+                    br
+                    em Local storage 
+                    | stores data with no expiration date.
+                    br
+                    em Session storage 
+                    | only stores data for one session.
+                    br
+                    em Cookies 
+                    | have far less space reserved. 
+                    br
+                    | This StackOverflow thread has a good explanation.
+                    br
+                    a(href="http://stackoverflow.com/questions/3220660/local-storage-vs-cookies") http://stackoverflow.com/questions/3220660/local-storage-vs-cookies
+
+                h3: strong Describe the difference between &lt;script&gt;, &lt;script async&gt; and &lt;script defer&gt; .
+                p
+                    | David Walsh said it best: "This WebKit blog post explains the difference between defer and async best:
+                    br
+                    p.blockquote
+                        | 'Both async and defer scripts begin to download immediately without pausing the parser and both support 
+                        | an optional onload handler to address the common need to perform initialization which depends on the 
+                        | script. The difference between async and defer centers around when the script is executed. Each async 
+                        | script executes at the first opportunity after it is finished downloading and before the window's load 
+                        | event. This means it's possible (and likely) that async scripts are not executed in the order in which 
+                        | they occur in the page. The defer scripts, on the other hand, are guaranteed to be executed in the order 
+                        | they occur in the page. That execution starts after parsing is completely finished, but before the 
+                        | document's DOMContentLoaded event.'"
+
+                h3: strong Have you used different HTML templating languages before?
+                p
+                    | Yo dude, I'm doing that right now! :D
+
+            article#css
+                h2 CSS Questions
+                h3: strong What is the difference between classes and ID's in CSS?
+                p
+                    | Classes, denoted by a period, and ID's, denoted by an octothorp, are both used in CSS as selectors.
+                    | There can exist any number of classes, whereas there can only exist one ID. Accordingly, when 
+                    | an element has two conflicting styles between a class and ID selector, it will choose the style 
+                    | associated with the ID selector; CSS always chooses the most specific selector possible in the 
+                    | event of conflicts.
+
+                h3: strong What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?
+                p
+                    | From 
+                    a(href="http://stackoverflow.com/questions/6887336/what-is-the-difference-between-normalize-css-and-reset-css") this StackOverflow answer:
+                    br
+                    p.blockquote
+                        | "<strong>Normalize.css preserves useful defaults rather than "unstyling" everything.</strong> For example,  
+                        | elements like sup or sub "just work" after including normalize.css (and are actually made more robust) whereas 
+                        | they are visually indistinguishable from normal text after including reset.css. So, normalize.css does 
+                        | not impose a visual starting point (homogeny) upon you. This may not be to everyone's taste. The best 
+                        | thing to do is experiment with both and see which gels with your preferences.
                         br
-                        | Now there technically exists three modes: quirks mode, which emulates the 
-                        | Netscape Navigator and Internet Explorer 5 experience, almost standards mode
-                        | has trace amounts of quirky behavior, and standards mode, and full standards
-                        | mode, whose behavior is compliant with HTML and CSS specifications.
+                        | <strong>Normalize.css corrects some common bugs that are out of scope for reset.css.</strong> It has a wider scope than 
+                        | reset.css, and also provides bug fixes for common problems like: display settings for HTML5 elements, 
+                        | the lack of font inheritance by form elements, correcting font-size rendering for pre, SVG overflow in 
+                        | IE9, and the button styling bug in iOS.
                         br
-                        | "In HTML5, the only purpose of the DOCTYPE is to activate full standards mode. 
-                        | Older versions of the HTML standard gave additional meaning to the DOCTYPE, 
-                        | but no browser has ever used the DOCTYPE for anything other than switching 
-                        | between quirks mode and standards mode." [
-                        a(href="https://developer.mozilla.org/en-US/docs/Quirks_Mode_and_Standards_Mode") citation
-                        | ]
-
-                    h3: strong What's the difference between HTML and XHTML?
-                    p
-                        | It determines rules for parsing. Documents served with a 'Content-type: text/html'
-                        | header are to be parsed using HTML syntax rules, which are typically less strict, 
-                        | whereas a 'Content-type: application/xml+xhtml' header should be parsed using 
-                        | XHTML syntax which is more strict. 
-                        a(href="http://www.sitepoint.com/web-foundations/differences-html-xhtml/") More info can be read here.
-
-                    h3: strong Are there any problems with serving pages as application/xhtml+xml?
-                    p
-                        | From Google HTML/CSS Standards:
-                        | "Use HTML5. HTML5 (HTML syntax) is preferred for all HTML documents: &lt;!DOCTYPE html&gt;. 
-                        | (It's recommended to use HTML, as text/html. Do not use XHTML. XHTML, as application/xhtml+xml, 
-                        | lacks both browser and infrastructure support and offers less room for optimization than HTML.)
-                        | Although fine with HTML, do not close void elements, i.e. write &lt;br&gt;, not &lt;br /&gt;."
-
-                    h3: strong How do you serve a page with content in multiple languages?
-                    p
-                        | Localization and Internationalization
-
-                    h3: strong Consider HTML5 as an open web platform. What are the building blocks of HTML5?
-                    p
-                        | HTML5 offers some more sematic text markup, e.g. article, aside, header, footer, input, etc., 
-                        | some of it's largest features come in the realm of multimedia, i.e. canvas and video. There is
-                        | also new data storage: local storage, session storage, and web database, as opposed to cookies.
+                        | <strong>Normalize.css doesn't clutter your dev tools.</strong> A common irritation when using reset.css is the large 
+                        | inheritance chain that is displayed in browser CSS debugging tools. This is not such an issue with 
+                        | normalize.css because of the targeted stylings.
                         br
-                        em Local storage 
-                        | stores data with no expiration date.
+                        | <strong>Normalize.css is more modular.</strong> The project is broken down into relatively independent sections, making 
+                        | it easy for you to potentially remove sections (like the form normalizations) if you know they will never 
+                        | be needed by your website.
                         br
-                        em Session storage 
-                        | only stores data for one session.
-                        br
-                        em Cookies 
-                        | have far less space reserved. 
-                        br
-                        | This StackOverflow thread has a good explanation.
-                        br
-                        a(href="http://stackoverflow.com/questions/3220660/local-storage-vs-cookies") http://stackoverflow.com/questions/3220660/local-storage-vs-cookies
+                        | <strong>Normalize.css has better documentation.</strong> The normalize.css code is documented inline as well as more 
+                        | comprehensively in the GitHub Wiki. This means you can find out what each line of code is doing, why it 
+                        | was included, what the differences are between browsers, and more easily run your own tests. The project 
+                        | aims to help educate people on how browsers render elements by default, and make it easier for them to be 
+                        | involved in submitting improvements."
 
-                    h3: strong Describe the difference between &lt;script&gt;, &lt;script async&gt; and &lt;script defer&gt; .
-                    p
-                        | David Walsh said it best: "This WebKit blog post explains the difference between defer and async best:
-                        br
-                        p.blockquote
-                            | 'Both async and defer scripts begin to download immediately without pausing the parser and both support 
-                            | an optional onload handler to address the common need to perform initialization which depends on the 
-                            | script. The difference between async and defer centers around when the script is executed. Each async 
-                            | script executes at the first opportunity after it is finished downloading and before the window's load 
-                            | event. This means it's possible (and likely) that async scripts are not executed in the order in which 
-                            | they occur in the page. The defer scripts, on the other hand, are guaranteed to be executed in the order 
-                            | they occur in the page. That execution starts after parsing is completely finished, but before the 
-                            | document's DOMContentLoaded event.'"
+                    | That being said, I often use normalize.css. I value modular code, and less obfuscated debugging process. When 
+                    | something inevitably goes wrong and I have to go to debug, I don't want to have to sift through all of the 
+                    | reset.css styles in my inheritance chain to find the troublemaker.
 
-                    h3: strong Have you used different HTML templating languages before?
-                    p
-                        | Yo dude, I'm doing that right now! :D
+                h3: strong Describe Floats and how they work.
+                p
+                    | Floats are meant to simulate the experience with print media, how you have an image left or right of a body
+                    | of text, with the text wrapping it. The difference with floated elements and absolutely positioned elements
+                    | is while absolutely positioned elements are removed from the flow of the page - with all remaining elements
+                    | behaving as if that element isn't there, floated elements contribute to the flow of the page.
+                    br
+                    | Floats can also have wonky behavior, hence its sibling property, clear. 
+                    a(href="https://css-tricks.com/all-about-floats/") More info here.
 
-                article#css
-                    h2 CSS Questions
-                    h3: strong What is the difference between classes and ID's in CSS?
-                    p
-                        | Classes, denoted by a period, and ID's, denoted by an octothorp, are both used in CSS as selectors.
-                        | There can exist any number of classes, whereas there can only exist one ID. Accordingly, when 
-                        | an element has two conflicting styles between a class and ID selector, it will choose the style 
-                        | associated with the ID selector; CSS always chooses the most specific selector possible in the 
-                        | event of conflicts.
+                h3: strong Describe BFC(Block Formatting Context) and how it works.
+                p
+                    | Ok, this one's a doozy.
+                    br
+                    | I just tried to digest all of the text from Mozilla's Web Developer guide and a StackOverflow answer and this is
+                    | what I have. Correct me if I'm wrong, of course.
+                    br
+                    | Let's start with why it's used. BFC is useful because it makes parent elements contain all of its descendents. This
+                    | is especially important in respect to floated elements, as sometimes they extend beyond their parent container. By 
+                    | creating these BFCs, you create reliable interactions between your block elements.
+                    br 
+                    | Because I don't trust my own definition yet, here are some links that helped me understand a bit better.
+                    a(href="http://stackoverflow.com/questions/6196725/how-does-the-css-block-formatting-context-work") StackOverflow. Thanks again and always.
+                    br
+                    a(href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context") Mozilla Developer Guide
 
-                    h3: strong What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?
-                    p
-                        | From 
-                        a(href="http://stackoverflow.com/questions/6887336/what-is-the-difference-between-normalize-css-and-reset-css") this StackOverflow answer:
-                        br
-                        p.blockquote
-                            | "<strong>Normalize.css preserves useful defaults rather than "unstyling" everything.</strong> For example,  
-                            | elements like sup or sub "just work" after including normalize.css (and are actually made more robust) whereas 
-                            | they are visually indistinguishable from normal text after including reset.css. So, normalize.css does 
-                            | not impose a visual starting point (homogeny) upon you. This may not be to everyone's taste. The best 
-                            | thing to do is experiment with both and see which gels with your preferences.
+                h3: strong What are the various clearing techniques and which is appropriate for what context?
+                p 
+                    | Ripped my answers from 
+                    a(href="https://css-tricks.com/all-about-floats/") here 
+                    | no shame.
+                dl
+                    dt: span.code clear: both;
+                    dd
+                        | "If you are in a situation where you always know what the succeeding element is going to be"
+
+                    dt The empty div method
+                    dd 
+                        span.code &lt;div style="clear: both;"&gt;&lt;/div&gt;
+
+                    dt The overflow method
+                    dd
+                        | "relies on setting the overflow CSS property on a parent element. If this property is set to auto or 
+                        | hidden on the parent element, the parent will expand to contain the floats, effectively clearing it 
+                        | for succeeding elements."
+
+                    dt The easy clearing method
+                    dd
+                        span.code 
+                            | .clearfix:after {
                             br
-                            | <strong>Normalize.css corrects some common bugs that are out of scope for reset.css.</strong> It has a wider scope than 
-                            | reset.css, and also provides bug fixes for common problems like: display settings for HTML5 elements, 
-                            | the lack of font inheritance by form elements, correcting font-size rendering for pre, SVG overflow in 
-                            | IE9, and the button styling bug in iOS.
+                            | &nbsp;&nbsp;content: ".";
                             br
-                            | <strong>Normalize.css doesn't clutter your dev tools.</strong> A common irritation when using reset.css is the large 
-                            | inheritance chain that is displayed in browser CSS debugging tools. This is not such an issue with 
-                            | normalize.css because of the targeted stylings.
+                            | &nbsp;&nbsp;visibility: hidden;
                             br
-                            | <strong>Normalize.css is more modular.</strong> The project is broken down into relatively independent sections, making 
-                            | it easy for you to potentially remove sections (like the form normalizations) if you know they will never 
-                            | be needed by your website.
+                            | &nbsp;&nbsp;display: block;
                             br
-                            | <strong>Normalize.css has better documentation.</strong> The normalize.css code is documented inline as well as more 
-                            | comprehensively in the GitHub Wiki. This means you can find out what each line of code is doing, why it 
-                            | was included, what the differences are between browsers, and more easily run your own tests. The project 
-                            | aims to help educate people on how browsers render elements by default, and make it easier for them to be 
-                            | involved in submitting improvements."
+                            | &nbsp;&nbsp;height: 0; 
+                            br
+                            | &nbsp;&nbsp;clear: both;
+                            br
+                            | }
 
-                        | That being said, I often use normalize.css. I value modular code, and less obfuscated debugging process. When 
-                        | something inevitably goes wrong and I have to go to debug, I don't want to have to sift through all of the 
-                        | reset.css styles in my inheritance chain to find the troublemaker.
-
-                    h3: strong Describe Floats and how they work.
+                    h3: strong Explain CSS sprites, and how you would implement them on a page or site.
                     p
-                        | Floats are meant to simulate the experience with print media, how you have an image left or right of a body
-                        | of text, with the text wrapping it. The difference with floated elements and absolutely positioned elements
-                        | is while absolutely positioned elements are removed from the flow of the page - with all remaining elements
-                        | behaving as if that element isn't there, floated elements contribute to the flow of the page.
-                        br
-                        | Floats can also have wonky behavior, hence its sibling property, clear. 
-                        a(href="https://css-tricks.com/all-about-floats/") More info here.
+                        | CSS sprites are when you have multiple images in one larger image, as to reduce the number of HTTP
+                        | requests. In order to use them, you set them as a background image, as normal, and then offset its
+                        | position with
+                        span.code background-position
+                        | . If you use Grunt/Gulp/Node, 
+                        a(href="https://github.com/aslansky/css-sprite") this 
+                        | seems pretty sick. I will have to use it soon. :)
 
-                    h3: strong Describe BFC(Block Formatting Context) and how it works.
+                    h3: strong What are some of the "gotchas" for writing efficient CSS?
                     p
-                        | Ok, this one's a doozy.
+                        | Efficient is an interesting word.
                         br
-                        | I just tried to digest all of the text from Mozilla's Web Developer guide and a StackOverflow answer and this is
-                        | what I have. Correct me if I'm wrong, of course.
-                        br
-                        | Let's start with why it's used. BFC is useful because it makes parent elements contain all of its descendents. This
-                        | is especially important in respect to floated elements, as sometimes they extend beyond their parent container. By 
-                        | creating these BFCs, you create reliable interactions between your block elements.
-                        br 
-                        | Because I don't trust my own definition yet, here are some links that helped me understand a bit better.
-                        a(href="http://stackoverflow.com/questions/6196725/how-does-the-css-block-formatting-context-work") StackOverflow. Thanks again and always.
-                        br
-                        a(href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context") Mozilla Developer Guide
-
-                    h3: strong What are the various clearing techniques and which is appropriate for what context?
-                    p 
-                        | Ripped my answers from 
-                        a(href="https://css-tricks.com/all-about-floats/") here 
-                        | no shame.
-                    dl
-                        dt: span.code clear: both;
-                        dd
-                            | "If you are in a situation where you always know what the succeeding element is going to be"
-
-                        dt The empty div method
-                        dd 
-                            span.code &lt;div style="clear: both;"&gt;&lt;/div&gt;
-
-                        dt The overflow method
-                        dd
-                            | "relies on setting the overflow CSS property on a parent element. If this property is set to auto or 
-                            | hidden on the parent element, the parent will expand to contain the floats, effectively clearing it 
-                            | for succeeding elements."
-
-                        dt The easy clearing method
-                        dd
-                            span.code 
-                                | .clearfix:after {
-                                br
-                                | &nbsp;&nbsp;content: ".";
-                                br
-                                | &nbsp;&nbsp;visibility: hidden;
-                                br
-                                | &nbsp;&nbsp;display: block;
-                                br
-                                | &nbsp;&nbsp;height: 0; 
-                                br
-                                | &nbsp;&nbsp;clear: both;
-                                br
-                                | }
-
-                        h3: strong Explain CSS sprites, and how you would implement them on a page or site.
-                        p
-                            | CSS sprites are when you have multiple images in one larger image, as to reduce the number of HTTP
-                            | requests. In order to use them, you set them as a background image, as normal, and then offset its
-                            | position with
-                            span.code background-position
-                            | . If you use Grunt/Gulp/Node, 
-                            a(href="https://github.com/aslansky/css-sprite") this 
-                            | seems pretty sick. I will have to use it soon. :)
-
-                        h3: strong What are some of the "gotchas" for writing efficient CSS?
-                        p
-                            | Efficient is an interesting word.
-                            br
-                            | Efficient, as in 
-                            em easy to understand 
-                            | I use several concepts.
-                            ul
-                                li I use a preprocessor (SASS/SCSS)
-                                li I (try to) alphabetize properites within a selector
-                                li I write modular CSS. I keep partials which house individual components and base styling.
-                                li
-                                    | I try write my CSS where selectors loosely follow the HTML structure. For example, if 
-                                    span.code .section-one 
-                                    | comes before 
-                                    span.code .section-two 
-                                    | in the HTML, it will in the CSS file as well.
-                                li: When appropriate, I use variables and mixins to add readability and for decluttering.
-                            | Efficiency, as in 
-                            em well-performing 
-                            | I follow these guidelines.
-                            ul
-                                li Avoid styling tag selectors/making rules as specific as possible
-                                li Avoid the * selector 
-                                li Allowing child divs to inherit from parent
-                                li Avoid descendent selectors
+                        | Efficient, as in 
+                        em easy to understand 
+                        | I use several concepts.
+                        ul
+                            li I use a preprocessor (SASS/SCSS)
+                            li I (try to) alphabetize properites within a selector
+                            li I write modular CSS. I keep partials which house individual components and base styling.
+                            li
+                                | I try write my CSS where selectors loosely follow the HTML structure. For example, if 
+                                span.code .section-one 
+                                | comes before 
+                                span.code .section-two 
+                                | in the HTML, it will in the CSS file as well.
+                            li: When appropriate, I use variables and mixins to add readability and for decluttering.
+                        | Efficiency, as in 
+                        em well-performing 
+                        | I follow these guidelines.
+                        ul
+                            li Avoid styling tag selectors/making rules as specific as possible
+                            li Avoid the * selector 
+                            li Allowing child divs to inherit from parent
+                            li Avoid descendent selectors
 
         footer
             h6 Lawrence Humphrey &#169; 2015
