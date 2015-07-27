@@ -121,7 +121,7 @@ footer {
   max-width: 28rem;
   padding: 0 2rem;
   text-align: center;
-  width: 90%; }
+  width: 90vw; }
   .more-info p {
     margin: 0 auto;
     max-width: 275px;
@@ -162,8 +162,8 @@ footer {
 
 @media all and (min-width: 1000px) {
   .content {
-    -webkit-box-flex: 4 0px;
-    -moz-box-flex: 4 0px;
-    -webkit-flex: 4 0px;
-    -ms-flex: 4 0px;
-    flex: 4 0px; } }
+    -webkit-box-flex: 8 0px;
+    -moz-box-flex: 8 0px;
+    -webkit-flex: 8 0px;
+    -ms-flex: 8 0px;
+    flex: 8 0px; } }
