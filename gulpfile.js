@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var jade = require('gulp-jade');
+var livereload = require('gulp-livereload');
 
 // Jade
 gulp.task('templates', function() {
@@ -14,14 +15,16 @@ gulp.task('templates', function() {
     .pipe(jade({
         locals: YOUR_LOCALS
     }))
-    .pipe(gulp.dest('./notes/dist/'));
+    .pipe(gulp.dest('./notes/dist/'))
+    .pipe(livereload({ start: true }));
 });
 
 // Compile Our Sass
 gulp.task('sass', function() {
     return gulp.src('notes/scss/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('notes/dist/css'));
+        .pipe(gulp.dest('notes/dist/css'))
+        .pipe(livereload({ start: true }));
 });
 
 // Minify CSS
@@ -33,8 +36,9 @@ gulp.task('minify', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('notes/scss/*.scss', ['sass', 'minify']);
-    gulp.watch('notes/scss/partials/*.scss', ['sass', 'minify']);
+    livereload.listen();
+    gulp.watch('notes/scss/*.scss', ['sass']);
+    gulp.watch('notes/scss/partials/*.scss', ['sass']);
     gulp.watch('notes/templates/*.jade', ['templates']);
 });
 

@@ -124,7 +124,7 @@ footer {
     max-width: 28rem;
     padding: 0 2rem;
     text-align: center;
-    width: 90%;
+    width: 90vw;
 
     p { 
         margin: 0 auto;
@@ -172,6 +172,6 @@ footer {
 
 @media all and (min-width: 1000px) {
     .content {
-        @include flex(4 0px);
+        @include flex(8 0px);
     }
 }
