@@ -1,8 +1,6 @@
 # interview-prep
 Conquering coding interviews by heaps and bounds.
 
-Notes that I've taken as I've gone along are in notes/dist/index.html. It will be living and breathing on the internet in due time - i.e. when I flesh it out a bit more and finalize some design ideas.
-
 Coding questions are Cracking the Coding Interview, Edition 4.
 They are located in /cracking-the-coding-challenge and are organized by topic
 and question number. 

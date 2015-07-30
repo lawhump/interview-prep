@@ -354,3 +354,94 @@ public String stringClean(String str) {
   
   return str.charAt(0) + stringClean(str.substring(1, str.length()));
 }
+
+
+// Given a string that contains a single pair of parenthesis, compute recursively a new string made of only of the parenthesis and their contents, so "xyz(abc)123" yields "(abc)". 
+
+// parenBit("xyz(abc)123") → "(abc)"
+// parenBit("x(hello)") → "(hello)"
+// parenBit("(xy)1") → "(xy)"
+
+public String parenBit(String str) {
+  if (str == null || str.length() <= 2) {
+    return "()";
+  }
+  
+  if (str.charAt(0) == '(') {
+    if (str.charAt(str.length()-1) == ')') {
+      return str;
+    }
+    return parenBit(str.substring(0,str.length()-1));
+  }
+  return parenBit(str.substring(1,str.length()));
+}
+
+
+// Given a string, return true if it is a nesting of zero or more pairs of parenthesis, like "(())" or "((()))". Suggestion: check the first and last chars, and then recur on what's inside them. 
+
+// nestParen("(())") → true
+// nestParen("((()))") → true
+// nestParen("(((x))") → false
+
+public boolean nestParen(String str) {
+  if (str == null || str.length() == 0) {
+    return true;
+  }
+  
+  if (str.charAt(0)=='(' && str.charAt(str.length()-1) == ')') {
+    return true && nestParen(str.substring(1, str.length()-1));
+  }
+  
+  if (str.charAt(0) == '(' || str.charAt(str.length()-1) == ')') {
+    return false;
+  }
+  
+  return true;
+}
+
+
+// Given a string and a non-empty substring sub, compute recursively the number of times that sub appears in the string, without the sub strings overlapping. 
+
+// strCount("catcowcat", "cat") → 2
+// strCount("catcowcat", "cow") → 1
+// strCount("catcowcat", "dog") → 0
+
+public int strCount(String str, String sub) {
+  if (str == null || sub == null || str.length() < sub.length()) {
+    return 0;
+  }
+  
+  if (str.indexOf(sub) == 0) {
+    return 1 + strCount(str.substring(sub.length(), str.length()), sub);  
+  }
+  
+  return strCount(str.substring(1, str.length()), sub);
+}
+
+
+// Given a string and a non-empty substring sub, compute recursively if at least n copies of sub appear in the string somewhere, possibly with overlapping. N will be non-negative. 
+
+// strCopies("catcowcat", "cat", 2) → true
+// strCopies("catcowcat", "cow", 2) → false
+// strCopies("catcowcat", "cow", 1) → true
+
+public boolean strCopies(String str, String sub, int n) {
+  if (str == null || str.length() == 0) {
+    return false;
+  }
+  
+  return n <= strCopiesHelper(str, sub);
+}
+
+
+public int strCopiesHelper(String str, String sub) {
+  if (str.length() == 0) {
+    return 0;
+  }
+  
+  if(str.indexOf(sub) == 0) {
+    return 1 + strCopiesHelper(str.substring(1, str.length()), sub);
+  }
+  
+  return strCopiesHelper(str.substring(1, str.length()), sub);
+}
