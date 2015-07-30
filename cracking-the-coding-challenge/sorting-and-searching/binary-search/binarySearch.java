@@ -24,7 +24,7 @@ public class binarySearch {
 		bst.find(42);
 		bst.find(16);
 
-		bst.printByLevel();
+		bst.levelOrderTraversal();
 	}
 
 }

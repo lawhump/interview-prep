@@ -1,16 +1,13 @@
 import java.util.*;
 
-// TODO Make BST extend BT
 // TODO Make AVL Tree extend BST
-public class BST {
-	private Node head;
-
+public class BST extends BinaryTree{
 	public BST() {
-		this.head = null;
+		super();
 	}
 
 	public BST(int v) {
-		this.head = new Node(v);
+		super(v);
 	}
 
 	/**
@@ -71,7 +68,7 @@ public class BST {
 	 * @return 
 	 */
 	public boolean isBalanced(int tol) {
-
+		return true;
 	}
 
 	public void remove(Node n) { }
@@ -128,40 +125,6 @@ public class BST {
 	 */
 	// public AVLTree toAVLTree { }
 
-	// lol
-	public Node getHead() {
-		return head;
-	}
-
-	/**
-	 *
-	 * BFS to print tree by level. Using for 
-	 * testing and debugging purposed.
-	 *
-	 * Cool because I already implemented BFS
-	 * and DFS in python, but that was with 
-	 * adjacency lists, and not explicit nodes
-	 * and pointers.
-	 * 
-	 */
-	public void printByLevel(){
-		List<Node> queue = new LinkedList<Node>();
-		queue.add(head);
-
-		while (queue.size() != 0) {
-			Node curr = queue.remove(0);
-			System.out.println(curr.getValue());
-
-			if (curr.getLeft() != null){
-				queue.add(curr.getLeft());
-			}
-
-			if(curr.getRight() != null){
-				queue.add(curr.getRight());
-			}
-		}
-	}
-
 	/**
 	 * Yeah yeah yeah, I didn't know what to name it.
 	 *
@@ -169,72 +132,21 @@ public class BST {
 	 * i think i'm going to rewrite the Node class to store
 	 * height. it's the lazy way out, i know
 	 */	
-	public ArrayList<LinkedList> questionFour() {
-		List<Node> queue = new LinkedList<Node>();
-		queue.add(head);
+	// public ArrayList<LinkedList> questionFour() {
+	// 	List<Node> queue = new LinkedList<Node>();
+	// 	queue.add(head);
 
-		while (queue.size() != 0) {
-			Node curr = queue.remove(0);
-			System.out.println(curr.getValue());
+	// 	while (queue.size() != 0) {
+	// 		Node curr = queue.remove(0);
+	// 		System.out.println(curr.getValue());
 
-			if (curr.getLeft() != null){
-				queue.add(curr.getLeft());
-			}
+	// 		if (curr.getLeft() != null){
+	// 			queue.add(curr.getLeft());
+	// 		}
 
-			if(curr.getRight() != null){
-				queue.add(curr.getRight());
-			}
-		}
-	}
-
-	/**
-	 * The standard set of traversal algorithms.
-	 * Trying to refamiliarize myself with 
-	 * recursion, trees, and recursion on trees.
-	 */
-	public void preOrderTraversal(){
-		System.out.println("Beginning preOrder traversal:");
-		if (head!=null) {
-			preOrderTraversal(head);
-		}
-	}
-	
-	private void preOrderTraversal(Node subRoot){
-		if(subRoot != null){
-			System.out.println(subRoot.getValue());
-			preOrderTraversal(subRoot.getLeft());
-			preOrderTraversal(subRoot.getRight());
-		}
-	}
-
-	public void inOrderTraversal(){
-		System.out.println("Beginning inOrder traversal:");
-		if (head!=null) {
-			inOrderTraversal(head);
-		}
-	}
-	
-	private void inOrderTraversal(Node subRoot){
-		if(subRoot != null){
-			inOrderTraversal(subRoot.getLeft());
-			System.out.println(subRoot.getValue());
-			inOrderTraversal(subRoot.getRight());
-		}
-	}
-
-	public void postOrderTraversal(){
-		System.out.println("Beginning postOrder traversal:");
-		if (head!=null) {
-			postOrderTraversal(head);
-		}
-	}
-	
-	private void postOrderTraversal(Node subRoot){
-		if(subRoot != null){
-			postOrderTraversal(subRoot.getLeft());
-			postOrderTraversal(subRoot.getRight());
-			System.out.println(subRoot.getValue());
-
-		}
-	}
+	// 		if(curr.getRight() != null){
+	// 			queue.add(curr.getRight());
+	// 		}
+	// 	}
+	// }
 }
