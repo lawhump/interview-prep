@@ -47,13 +47,21 @@ h2 {
 }
 
 h3 {  }
-h4 {  }
+
+h4 {
+    font-style: italic;
+}
+
 h5 {
     margin: 0 auto;
     max-width: 95%;
 }
 h6 {  }
-p  {  }
+
+p  {
+    line-height: 1.8;
+}
+
 a {
 	text-decoration: none;
 }
@@ -138,6 +146,8 @@ footer {
 
     p {
         margin-bottom: 4rem;
+        min-width: 280px;
+        width: 70%;
     }
 }
 

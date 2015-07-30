@@ -12,24 +12,27 @@ html(lang="en")
                     li: a(href="index.html") Data Structures and Algorithms
                     li: a(href="web.html") Web Development
 
-        div.anchors
+        aside.anchors
             h3 Jump to section:
             a(href='#algorithm-approaches') Algorithm Approaches
             br
-            a(href='#trees-and-graphs') Trees and Graphs
+            a(href='#trees') Trees
+            br
+            a(href='#graphs') Graphs
 
-        div.more-info
+        aside.more-info
             p.
-                This was my attempt to keep me obligated to studying
-                and learning new things - i.e. using Jade for the first 
-                time. More available on github. Check me out dudes! 
+                This was my attempt to keep me obligated to study
+                and learn new things - i.e. using Jade for the first 
+                time. Implementation and more available on github. 
+                Check me out dudes! 
             a(href='http://www.github.com/lawhump') My Github
 
         section.content
             article#algorithm-approaches
                 h2 Algorithm Approaches
 
-                h3 <strong>Five Algorithm Approaches</strong>
+                h3: strong Five Algorithm Approaches
                 ol
                     li
                         h4 Examplify
@@ -62,32 +65,127 @@ html(lang="en")
                             and see which one(s) applies/apply.
 
 
-            article#trees-and-graphs
-                h2 Trees and Graphs
+            article#trees
+                h2 Trees
 
-                h3 <strong>Potential Issues to Watch Out For</strong>
+                h3: strong Potential Issues to Watch Out For
+                h4 Binary Tree vs. Binary Search Tree
+                p
+                    | Don't jump to conclusions. Remember to ask the 
+                    | interviewer to clarify.
 
-                h5 Binary Tree vs. Binary Search Tree
-                    p.
-                        Don't jump to conclusions. Remember to ask the 
-                        interviewer to clarify.
+                h4 Balanced vs. Unbalanced
+                p
+                    | Ask interviewer to clarify. Usually balanced within 
+                    | a certain tolerance.
 
-                h5 Balanced vs. Unbalanced
-                    p.
-                        Ask interviewer to clarify. Usually balanced within 
-                        a certain tolerance.
+                h4 Full and Complete
+                p
+                    | Again, ask to clarify. Full - 0 or n children, where
+                    | n is derived from the n-ary tree.
 
-                h5 Full and Complete
-                    p.
-                        Again, ask to clarify. Full - 0 or n children, where
-                        n is 
+                h3: strong Common Types
+                h4 Binary Trees
+                p
+                    | Tree structure categorized by having at most two children, commonly referred to as
+                    | left and right. Other terms often associated with binary trees are
+                    em full, complete, balanced, and perfect.
+                    br
+                    | Link: 
+                    a(href="https://en.wikipedia.org/wiki/Binary_tree") https://en.wikipedia.org/wiki/Binary_tree
 
-                h3 <strong>Three Ways to Represent Graphs in Memory</strong>
+                h4 Binary Search Trees
+                p
+                    | A subset of binary trees, where for all nodes left of 
+                    em root, 
+                    em left.val &lt; root.val. 
+                    | Similarly, for all nodes right of 
+                    em root, 
+                    em root.val &lt; right.val.
+                    br
+                    a(href="https://en.wikipedia.org/wiki/Binary_search_tree") https://en.wikipedia.org/wiki/Binary_search_tree
+
+                h4 AVL Trees
+                p
+                    | A self-balancing binary search tree. This leads to better worst case performance for typical BST functions
+                    | such as 
+                    em insert, find, 
+                    | and 
+                    em remove.
+                    br
+                    a(href="https://en.wikipedia.org/wiki/AVL_tree") https://en.wikipedia.org/wiki/AVL_tree
+
+                h4 B Trees
+                p
+                    | Yo dude
+
+                h4 n-ary Trees
+                p
+                    | A tree that for any node, it can have at most n children. Binary trees are a special case of n-ary trees
+                    | where n=2. 
+                    a(href="https://en.wikipedia.org/wiki/K-ary_tree") https://en.wikipedia.org/wiki/K-ary_tree
+
+                h4 Trie Trees
+                p
+                    | Also called a 
+                    em prefix-tree 
+                    | or 
+                    em radix-tree, 
+                    | According to Wikipedia: 
+                    p.blockquote 
+                        | "All the descendants of a node have a common prefix of the string associated with that node, and the 
+                        | root is associated with the empty string. Values are normally not associated with every node, only with 
+                        | leaves and some inner nodes that correspond to keys of interest.
+                        br
+                        | Though tries are most commonly keyed by character strings, they don't need to be. The same algorithms 
+                        | can easily be adapted to serve similar functions of ordered lists of any construct, e.g., permutations 
+                        | on a list of digits or shapes. In particular, a bitwise trie is keyed on the individual bits making up 
+                        | a short, fixed size of bits such as an integer number or memory address."
+                    br
+                    | They are sometimes used as a replacement to hashtables. 
+                    a(href="http://stackoverflow.com/questions/245878/how-do-i-choose-between-a-hash-table-and-a-trie-prefix-tree") This StackOverflow thread 
+                    | does a great job weighing why you'd use one over the other. In summary (because I know no one likes clicking 
+                    | on links), it says, verbatim:
+                    aside.blockquote
+                        p
+                            | "Advantages of tries:
+                            | The basics:
+                            ul
+                                li Predictable O(k) lookup time where k is the size of the key
+                                li Lookup can take less than k time if it's not there
+                                li Supports ordered traversal
+                                li No need for a hash function
+                                li Deletion is straightforward
+                            | New operations:
+                            ul
+                                li You can quickly look up prefixes of keys, enumerate all entries with a given prefix, etc.
+                            | Advantages of linked structure:
+                            ul
+                                li If there are many common prefixes, the space they require is shared.
+                                li Immutable tries can share structure. Instead of updating a trie in place, you can build a new one that's different only along one branch, elsewhere pointing into the old trie. This can be useful for concurrency, multiple simultaneous versions of a table, etc.
+                                li An immutable trie is compressible. That is, it can share structure on the suffixes as well, by hash-consing.
+                            | Advantages of hashtables:
+                            ul 
+                                li Everyone knows hashtables, right? Your system will already have a nice well-optimized implementation, faster than tries for most purposes.
+                                li Your keys need not have any special structure.
+                                li More space-efficient than the obvious linked trie structure"
+
+                    a(href="https://en.wikipedia.org/wiki/Trie") https://en.wikipedia.org/wiki/Trie
+
+                h4 k-d Trees
+                p
+                    | A multi-dimensional binary search tree. Very trippy stuff man. Nearest neighbor is a common thing on this tree.
+                    br
+                    a(href="https://en.wikipedia.org/wiki/K-d_tree") https://en.wikipedia.org/wiki/K-d_tree
+
+            article#graphs
+                h2 Graphs
+                h3: strong Three Ways to Represent Graphs in Memory
 
                 ol
-                    li Nodes as objects and edges as pointers
-                    li Adjacency Matrix
-                    li Adjacency List
+                    li Nodes as objects and edges as pointers - very readable and conceptually intuitive
+                    li Adjacency Matrix - best used if the graph is dense, as resizing is costly
+                    li Adjacency List - best used if the graph is sparse
                 
         footer
             h6 Lawrence Humphrey &#169; 2015
