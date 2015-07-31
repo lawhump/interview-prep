@@ -11,7 +11,8 @@ CLASSES = \
 	BinaryTree.java \
 	binarySearch.java \
 	Node.java \
-	BST.java
+	BST.java \
+	basicBinaryTree.java
 
 default: classes
 

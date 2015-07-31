@@ -16,27 +16,13 @@ public class BST extends BinaryTree{
 	 * AVL tree at some point soon. Balancing is 
 	 * important, you know? O(n) worst case on
 	 * a tree is not cool, you know?
+	 *
+	 * TODO Enforce unique entries
 	 */
 	public void insert(int v) {
 		Node root = head;
-		if (root.getValue() > v) {
-			if(root.getLeft() == null){
-				root.setLeft(v);
-			}
-
-			else {
-				insert(root.getLeft(), v);
-			}
-		}
-
-		else {
-			if(root.getRight() == null){
-				root.setRight(v);
-			}
-
-			else {
-				insert(root.getRight(), v);	
-			}
+		if (root!=null) {
+			insert(root, v);
 		}
 	}
 
@@ -118,12 +104,6 @@ public class BST extends BinaryTree{
 		System.out.println("Value not found");
 		return null;
 	}
-
-	/**
-	 * Stretch goal: implement an AVL tree.
-	 * This method serves as a good springboard.
-	 */
-	// public AVLTree toAVLTree { }
 
 	/**
 	 * Yeah yeah yeah, I didn't know what to name it.

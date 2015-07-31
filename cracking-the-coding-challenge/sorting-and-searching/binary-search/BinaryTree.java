@@ -10,8 +10,31 @@ public class BinaryTree extends nAryTree {
 		this.head = new Node(v);
 	}
 
-	// TODO implement w/ BFS
-	public void insert(int v) { }
+	// BFS implementation of insert
+	// The tree always stays minimum height
+	public void insert(int v) {
+		System.out.println("Inserting new node of value: " + v);
+		boolean looking = true;
+		List<Node> queue = new LinkedList<Node>();
+		queue.add(head);
+
+		while (queue.size() != 0 && looking) {
+			Node curr = queue.remove(0);
+
+			if(curr.getLeft() == null) {
+				curr.setLeft(v);
+				looking = false;
+			}
+
+			if(curr.getRight() == null && looking) {
+				curr.setRight(v);
+				looking = false;
+			}
+
+			queue.add(curr.getLeft());
+			queue.add(curr.getRight());
+		}
+	}
 
 	/**
 	 * TODO test this!!!!!
@@ -21,25 +44,27 @@ public class BinaryTree extends nAryTree {
 	 */
 	public Node find(int v) {
 		System.out.println("Looking for:" + v);
-		Node result = new Node();
-		if (head!=null) {
-			result = find(head, v);
-		}
-		
-		if (result == null) {
-			System.out.println("Value not found");
-		}
-		return result;
-	}
 
-	private Node find(Node subRoot, int v) {
-		if(subRoot != null){
-			find(subRoot.getLeft(), v);
-			if (subRoot.getValue() == v) {
-				return subRoot;
+		List<Node> queue = new LinkedList<Node>();
+		queue.add(head);
+
+		while (queue.size() != 0) {
+			Node curr = queue.remove(0);
+
+			if(curr.getValue() == v) {
+				System.out.println("Found value: " + v);
+				return curr;
 			}
-			find(subRoot.getRight(), v);
+
+			if (curr.getLeft()!=null) {
+				queue.add(curr.getLeft());
+			}
+			if (curr.getRight()!=null) {
+				queue.add(curr.getRight());
+			}
 		}
+
+		System.out.println("Did not find value: " + v);
 		return null;
 	}
 
@@ -53,6 +78,7 @@ public class BinaryTree extends nAryTree {
 	 * and pointers.
 	 */
 	public void levelOrderTraversal() {
+		System.out.println("Beginning level order traversal.");
 		List<Node> queue = new LinkedList<Node>();
 		queue.add(head);
 
