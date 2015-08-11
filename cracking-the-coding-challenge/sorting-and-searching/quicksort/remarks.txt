@@ -1,0 +1,1 @@
+A basic implementation of quicksort. This was heavily influenced by the pseudocode on Wikipedia. I'll likely get around to doing one of the quicksort variations, i.e. quicksort with 3-way partition.

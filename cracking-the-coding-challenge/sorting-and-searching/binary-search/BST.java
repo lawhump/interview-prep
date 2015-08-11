@@ -49,15 +49,16 @@ public class BST extends BinaryTree{
 	}
 
 	/**
+	 * TODO implement
+	 *
 	 * Function to determine of the tree is balanced.
-	 * @param  tol maximum heights two subtrees can differ
-	 * @return 
+	 * @param   tol maximum heights two subtrees can differ
+	 * @return  if the max difference of any subtree height
+	 * 			is within tol
 	 */
 	public boolean isBalanced(int tol) {
 		return true;
 	}
-
-	public void remove(Node n) { }
 
 	/**
 	 * Binary search!
@@ -112,21 +113,24 @@ public class BST extends BinaryTree{
 	 * i think i'm going to rewrite the Node class to store
 	 * height. it's the lazy way out, i know
 	 */	
-	// public ArrayList<LinkedList> questionFour() {
-	// 	List<Node> queue = new LinkedList<Node>();
-	// 	queue.add(head);
 
-	// 	while (queue.size() != 0) {
-	// 		Node curr = queue.remove(0);
-	// 		System.out.println(curr.getValue());
+	/*
+	public ArrayList<LinkedList> questionFour() {
+		List<Node> queue = new LinkedList<Node>();
+		queue.add(head);
 
-	// 		if (curr.getLeft() != null){
-	// 			queue.add(curr.getLeft());
-	// 		}
+		while (queue.size() != 0) {
+			Node curr = queue.remove(0);
+			System.out.println(curr.getValue());
 
-	// 		if(curr.getRight() != null){
-	// 			queue.add(curr.getRight());
-	// 		}
-	// 	}
-	// }
+			if (curr.getLeft() != null){
+				queue.add(curr.getLeft());
+			}
+
+			if(curr.getRight() != null){
+				queue.add(curr.getRight());
+			}
+		}
+	}
+	*/
 }

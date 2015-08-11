@@ -1,3 +1,4 @@
+
 public interface Trees {
 	Node getHead();
 	

@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class BinaryTree extends nAryTree {
 
 	public BinaryTree() {
@@ -67,6 +68,30 @@ public class BinaryTree extends nAryTree {
 		System.out.println("Did not find value: " + v);
 		return null;
 	}
+
+
+
+	public void remove(Node n) {
+		System.out.println("Removing node with value: " + n.getValue());
+		if(n!=null) {
+			if (n.getLeft() == null && n.getRight() == null) {
+				n=null;
+			}
+
+			else if(n.getLeft() != null && n.getRight() == null) {
+				n = n.getLeft();
+			}
+
+			else if(n.getLeft() == null && n.getRight() != null) {
+				n = n.getRight();
+			}
+
+			else {
+				System.out.println("uhhhhhh");
+			}
+		}
+	}
+
 
 	/**
 	 * BFS to print tree by level. Using for 
