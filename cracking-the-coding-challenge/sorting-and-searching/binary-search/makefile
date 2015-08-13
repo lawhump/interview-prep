@@ -6,11 +6,11 @@ JC = javac
 	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
+	Node.java \
 	nAryTree.java \
 	Trees.java \
 	BinaryTree.java \
 	binarySearch.java \
-	Node.java \
 	BST.java \
 	basicBinaryTree.java
 

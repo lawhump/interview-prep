@@ -16,14 +16,9 @@ public class BST extends BinaryTree{
 	 * AVL tree at some point soon. Balancing is 
 	 * important, you know? O(n) worst case on
 	 * a tree is not cool, you know?
-	 *
-	 * TODO Enforce unique entries
 	 */
 	public void insert(int v) {
-		Node root = head;
-		if (root!=null) {
-			insert(root, v);
-		}
+		insert(head, v);
 	}
 
 	private void insert(Node subRoot, int v) {
@@ -104,6 +99,69 @@ public class BST extends BinaryTree{
 		}
 		System.out.println("Value not found");
 		return null;
+	}
+
+	public void remove(int v) {
+		System.out.println("Attempting to remove node with value: " + v);
+
+		remove(head, v);
+	}
+
+	private void remove(Node curr, int v) {
+		if (curr==null) {
+			System.out.println("Value " + v + " not found.");
+		}
+
+		if (curr.getValue() > v) {
+			remove(curr.getLeft(), v);
+		}
+
+		else if(curr.getValue() < v) {
+			remove(curr.getRight(), v);
+		}
+
+		else {
+			System.out.println("Removed value " + v);
+			// no children
+			if (curr.getLeft() == null && curr.getRight() == null) {
+				curr = null;
+			}
+
+			// only left child
+			else if (curr.getLeft() != null && curr.getRight() == null) {
+				(curr.getLeft()).setParent(curr.getParent());
+				(curr.getParent()).setLeft(curr.getLeft());
+			}
+
+			// only right child
+			else if (curr.getLeft() == null && curr.getRight() != null) {
+				(curr.getRight()).setParent(curr.getParent());
+				(curr.getParent()).setRight(curr.getRight());
+			}
+
+			// two children ugh
+			else {
+				swapAndTrim(curr);
+			}
+		}
+	}
+
+	private void swapAndTrim(Node curr) {
+		Node tempNode = curr;
+		// go as far left as i can
+		while (tempNode.getLeft() != null) {
+			tempNode = tempNode.getLeft();
+		}
+
+		int tempVal = tempNode.getValue();
+		tempNode.setValue(curr.getValue());
+		curr.setValue(tempVal);
+
+		curr.setNumOccurences(tempNode.getNumOccurences());
+
+		// ok, the values are "swapped". now let's trim
+
+		tempNode = null;
 	}
 
 	/**

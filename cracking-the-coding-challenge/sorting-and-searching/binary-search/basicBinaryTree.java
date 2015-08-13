@@ -9,21 +9,24 @@ public class basicBinaryTree {
 		bt.insert(3);
 		bt.insert(5);
 		bt.insert(7);
+		bt.insert(77);
+		bt.insert(24);
+		bt.insert(5);
+		bt.insert(5);
 
 		bt.levelOrderTraversal();
-
-		Node byebye = bt.find(5);
-		bt.remove(byebye);
 
 		bt.insert(9);
 		bt.insert(11);
 
-		bt.levelOrderTraversal();
-
-		Node test = bt.find(3);
-		System.out.println("test.value = " + test.getValue());
 		bt.find(11);
 		bt.find(17);
+
+		bt.remove(5);
+		bt.remove(11);
+		bt.remove(77);
+		
+		bt.levelOrderTraversal();
 	}
 
 }

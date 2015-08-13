@@ -22,6 +22,12 @@ public class BinaryTree extends nAryTree {
 		while (queue.size() != 0 && looking) {
 			Node curr = queue.remove(0);
 
+			if (curr.getValue() == v){
+				curr.incrementOccurences();
+				looking = false;
+				System.out.println("Node already existed. Incrementing number of occurences.");
+			}
+
 			if(curr.getLeft() == null) {
 				curr.setLeft(v);
 				looking = false;
@@ -71,27 +77,71 @@ public class BinaryTree extends nAryTree {
 
 
 
-	public void remove(Node n) {
-		System.out.println("Removing node with value: " + n.getValue());
-		if(n!=null) {
-			if (n.getLeft() == null && n.getRight() == null) {
-				n=null;
+	public void remove(int v) {		
+		boolean looking = true;
+		List<Node> queue = new LinkedList<Node>();
+		queue.add(head);
+
+		while (queue.size() != 0 && looking) {
+			Node curr = queue.remove(0);
+
+			if(curr.getValue() == v) {
+				looking = false;
+				if(curr.getNumOccurences() > 1) {
+					curr.decrementOccurences();
+				}
+				else {
+					if (curr.getLeft() == null && curr.getRight() == null) {
+						curr = null;
+					}
+
+					else if (curr.getLeft() != null && curr.getRight() == null) {
+						// essentially equivalent to:
+						// curr.left.parent = curr.parent;
+						// curr.parent.left = curr.left;
+						(curr.getLeft()).setParent(curr.getParent());
+						(curr.getParent()).setLeft(curr.getLeft());
+					}
+
+					else if(curr.getLeft() == null && curr.getRight() != null) {
+						(curr.getRight()).setParent(curr.getParent());
+						(curr.getParent()).setRight(curr.getRight());
+					}
+
+					else {
+						swapAndTrim(curr);
+					}
+				}
+				System.out.println("Removed node with value: " + v);
 			}
 
-			else if(n.getLeft() != null && n.getRight() == null) {
-				n = n.getLeft();
+			if (curr.getLeft()!=null) {
+				queue.add(curr.getLeft());
 			}
-
-			else if(n.getLeft() == null && n.getRight() != null) {
-				n = n.getRight();
-			}
-
-			else {
-				System.out.println("uhhhhhh");
+			if (curr.getRight()!=null) {
+				queue.add(curr.getRight());
 			}
 		}
 	}
 
+	private void swapAndTrim(Node curr) {
+		System.out.println("we're inside");
+		Node tempNode = curr;
+		// go as far left as i can
+		while (tempNode.getLeft() != null) {
+			tempNode = tempNode.getLeft();
+		}
+
+		int tempVal = tempNode.getValue();
+		tempNode.setValue(curr.getValue());
+		curr.setValue(tempVal);
+
+		curr.setNumOccurences(tempNode.getNumOccurences());
+
+		// ok, the values are "swapped". now let's trim
+
+		tempNode = null;
+	}
 
 	/**
 	 * BFS to print tree by level. Using for 
@@ -109,7 +159,7 @@ public class BinaryTree extends nAryTree {
 
 		while (queue.size() != 0) {
 			Node curr = queue.remove(0);
-			System.out.println(curr.getValue());
+			System.out.println("Value = " + curr.getValue() + " with " + curr.getNumOccurences() + " occurence" + (curr.getNumOccurences() > 1 ? "s." : "."));
 
 			if (curr.getLeft() != null){
 				queue.add(curr.getLeft());
@@ -135,7 +185,7 @@ public class BinaryTree extends nAryTree {
 	
 	private void preOrderTraversal(Node subRoot){
 		if(subRoot != null){
-			System.out.println(subRoot.getValue());
+			System.out.println("Value = " + subRoot.getValue() + " with " + subRoot.getNumOccurences() + " occurence" + (subRoot.getNumOccurences() > 1 ? "s." : "."));
 			preOrderTraversal(subRoot.getLeft());
 			preOrderTraversal(subRoot.getRight());
 		}
@@ -151,7 +201,7 @@ public class BinaryTree extends nAryTree {
 	private void inOrderTraversal(Node subRoot){
 		if(subRoot != null){
 			inOrderTraversal(subRoot.getLeft());
-			System.out.println(subRoot.getValue());
+			System.out.println("Value = " + subRoot.getValue() + " with " + subRoot.getNumOccurences() + " occurence" + (subRoot.getNumOccurences() > 1 ? "s." : "."));
 			inOrderTraversal(subRoot.getRight());
 		}
 	}
@@ -167,8 +217,7 @@ public class BinaryTree extends nAryTree {
 		if(subRoot != null){
 			postOrderTraversal(subRoot.getLeft());
 			postOrderTraversal(subRoot.getRight());
-			System.out.println(subRoot.getValue());
-
+			System.out.println("Value = " + subRoot.getValue() + " with " + subRoot.getNumOccurences() + " occurence" + (subRoot.getNumOccurences() > 1 ? "s." : "."));
 		}
 	}
 

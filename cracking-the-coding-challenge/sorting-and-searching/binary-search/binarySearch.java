@@ -7,6 +7,7 @@ public class binarySearch {
 		BST bst = new BST(15);
 
 		bst.insert(7);
+		bst.insert(7);
 		bst.insert(1);
 		bst.insert(3);
 		bst.insert(17);

@@ -4,6 +4,7 @@ public interface Trees {
 	
 	void insert(int v);
 	Node find(int v);
+	void remove(int v);
 
 	void levelOrderTraversal();
 	void preOrderTraversal();
